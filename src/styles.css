@@ -1,0 +1,119 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-brand-3: var(--brand-3);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  /* UWC palette: navy #003D7C, gold #FFB81C, sky accent */
+  --background: oklch(0.99 0.005 250);
+  --foreground: oklch(0.2 0.05 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.05 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.05 255);
+  --primary: oklch(0.36 0.13 258);            /* UWC navy */
+  --primary-foreground: oklch(0.99 0.01 90);
+  --secondary: oklch(0.95 0.02 250);
+  --secondary-foreground: oklch(0.25 0.08 258);
+  --muted: oklch(0.96 0.015 250);
+  --muted-foreground: oklch(0.5 0.03 255);
+  --accent: oklch(0.84 0.16 86);              /* UWC gold tint */
+  --accent-foreground: oklch(0.25 0.1 80);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.02 250);
+  --input: oklch(0.94 0.015 250);
+  --ring: oklch(0.36 0.13 258);
+
+  --brand: oklch(0.36 0.13 258);    /* navy */
+  --brand-2: oklch(0.82 0.17 86);   /* gold */
+  --brand-3: oklch(0.55 0.15 245);  /* sky */
+
+  --gradient-brand: linear-gradient(135deg, oklch(0.36 0.13 258), oklch(0.82 0.17 86));
+  --gradient-cool: linear-gradient(135deg, oklch(0.36 0.13 258), oklch(0.55 0.15 245));
+  --gradient-mesh: radial-gradient(at 20% 20%, oklch(0.7 0.15 258 / 0.4), transparent 50%),
+                   radial-gradient(at 80% 0%, oklch(0.85 0.17 86 / 0.45), transparent 50%),
+                   radial-gradient(at 80% 80%, oklch(0.7 0.14 245 / 0.4), transparent 50%);
+  --shadow-glow: 0 10px 40px -10px oklch(0.36 0.13 258 / 0.45);
+  --shadow-soft: 0 4px 24px -8px oklch(0.25 0.08 258 / 0.18);
+}
+
+.dark {
+  --background: oklch(0.18 0.04 258);
+  --foreground: oklch(0.97 0.01 90);
+  --card: oklch(0.23 0.05 258);
+  --card-foreground: oklch(0.97 0.01 90);
+  --popover: oklch(0.23 0.05 258);
+  --popover-foreground: oklch(0.97 0.01 90);
+  --primary: oklch(0.82 0.17 86);             /* gold pops on dark navy */
+  --primary-foreground: oklch(0.2 0.06 258);
+  --secondary: oklch(0.28 0.06 258);
+  --secondary-foreground: oklch(0.97 0.01 90);
+  --muted: oklch(0.26 0.05 258);
+  --muted-foreground: oklch(0.72 0.03 250);
+  --accent: oklch(0.45 0.14 258);
+  --accent-foreground: oklch(0.97 0.01 90);
+  --destructive: oklch(0.65 0.24 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.82 0.17 86);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-brand { background-image: var(--gradient-brand); }
+  .bg-gradient-cool { background-image: var(--gradient-cool); }
+  .bg-mesh { background-image: var(--gradient-mesh); }
+  .text-gradient-brand {
+    background-image: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+}
